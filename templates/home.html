@@ -2,12 +2,12 @@
 {% block content %}
     <h1>Feed</h1>
     {% for post in data %}
-        <article class="pa3 pa5-ns">
+        <article class="">
             <header>
                 <h1 class="">{{ post.title }}</h1>
-                <time class="f6 gray">By {{ post.author }} on {{ post.date_posted }} </time>
+                <time class="">By {{ post.author }} on {{ post.date_posted }} </time>
             </header>
-            <div class="measure lh-copy">
+            <div class="">
                 <p>{{ post.content }}</p>
             </div>
         </article>
