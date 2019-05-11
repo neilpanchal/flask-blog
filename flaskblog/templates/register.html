@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+{% block content %}
+<article class="black-80">
+    <h1 class="f5 pb4">Register</h1>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+
+        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+
+            <legend class="ph0 mh0 fw6 clip">Sign Up</legend>
+
+            <div class="mt3">
+                {{ form.username.label(class='db fw4 lh-copy f6') }}
+
+                {% if form.username.errors %}
+                    {{ form.username(required=False, class='pa2 input-reset ba bg-transparent w-100 mw5') }}
+                    <div class="red">
+                        {% for error in form.username.errors %}
+                            <span class="db">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(required=False, class='pa2 input-reset ba bg-transparent w-100 mw5') }}
+                {% endif %}
+            </div>
+
+            <div class="mt3">
+                {{ form.email.label(class='db fw4 lh-copy f6') }}
+                {% if form.email.errors %}
+                {{ form.email(required=False, class='pa2 input-reset ba bg-transparent w-100 mw5') }}
+                <div class="red">
+                    {% for error in form.email.errors %}
+                        <span class="db">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.email(required=False, class='pa2 input-reset ba bg-transparent w-100 mw5') }}
+                {% endif %}
+            </div>
+
+            <div class="mt3">
+                {{ form.password.label(class='db fw4 lh-copy f6') }}
+                {% if form.password.errors %}
+                {{ form.password(required=False, class='b pa2 input-reset ba bg-transparent w-100 mw5 b--red') }}
+                <div class="red">
+                    {% for error in form.password.errors %}
+                        <span class="db">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.password(required=False, class='b pa2 input-reset ba bg-transparent w-100 mw5') }}
+                {% endif %}
+            </div>
+            <div class="mt3">
+                {{ form.confirm_password.label(class='db fw4 lh-copy f6') }}
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(required=False, class='b pa2 input-reset ba bg-transparent w-100 mw5') }}
+                <div class="red">
+                    {% for error in form.confirm_password.errors %}
+                        <span class="db">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {{ form.confirm_password(required=False, class='b pa2 input-reset ba bg-transparent w-100 mw5') }}
+                {% endif %}
+            </div>
+        </fieldset>
+
+        <div class="mt3">
+            {{ form.submit(class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6")}}
+        </div>
+    </form>
+    <div class="mt2">
+        <small class="">Already have an account? <a class="link black underline-hover" href="{{ url_for('login') }}">Sign In</a> </small>
+    </div>
+</article>
+{% endblock content %}

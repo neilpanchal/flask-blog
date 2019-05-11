@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1 class="f5 pb4">Feed</h1>
+    {% for post in data %}
+        <article class="pb4">
+            <header>
+                <h1 class="f5 dark-blue">{{ post.title }}</h1>
+                <time class="gray f7"><div class="dib pr2 br b--light-silver">{{ post.author }}</div><div class="dib pl2"></div>{{ post.date_posted }}</time></time>
+            </header>
+            <div class="">
+                <p class="lh-copy">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

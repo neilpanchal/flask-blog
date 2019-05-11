@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Tachyons CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='tachyons/css/tachyons.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" />
+    {% if title %}
+    <title>Flask Blog - {{ title }} </title>
+    {% else %}
+    <title>Flask Blog</title>
+    {% endif %}
+</head>
+
+<body class="sans-serif pa3">
+    <header class="mb5 bb b--black">
+        <a class="link black underline-hover dib pa2 b" href="/">Flask Blog</a>
+        <nav class="flex justify-between">
+            <div class="">
+                <a class="link black dib underline-hover pa2" href="{{ url_for('home') }}">Home</a>
+                <a class="link black dib underline-hover pa2" href="{{ url_for('about') }}">About</a>
+            </div>
+            <div class="">
+                <a class="link black dib underline-hover pa2" href="{{ url_for('login') }}">Login</a>
+                <a class="link black dib underline-hover pa2" href="{{ url_for('register')}}">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="measure">
+        <div class="pa2">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="flex items-center justify-center pa4 bg-washed-{{ category }} black">
+                <svg class="w1" data-icon="info" viewBox="0 0 32 32" style="fill:currentcolor">
+                    <title>info icon</title>
+                    <path
+                        d="M16 0 A16 16 0 0 1 16 32 A16 16 0 0 1 16 0 M19 15 L13 15 L13 26 L19 26 z M16 6 A3 3 0 0 0 16 12 A3 3 0 0 0 16 6">
+                    </path>
+                </svg>
+                <span class="lh-title ml3">{{ message }}</span>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </div>
+        <!-- <div class="pa2">
+            <h3 class="f5">More</h3>
+            <ul class="list pl0">
+                <li class=""><a class="link black dib underline-hover" href="/">Latest Posts</a></li>
+                <li class=""><a class="link black dib underline-hover" href="/">Annoucements</a></li>
+                <li class=""><a class="link black dib underline-hover" href="/">Calendars</a></li>
+                <li class=""><a class="link black dib underline-hover" href="/">Contact Us</a></li>
+            </ul>
+        </div> -->
+    </main>
+    <footer class="mt5 mb4 ph2 light-silver db">
+        <small class="f7 db">© 2018 Neil Panchal. Built using Flask.</small>
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
